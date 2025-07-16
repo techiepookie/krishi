@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - KrishiMitra | Revolutionary Farming Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'farm-green': {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 15s ease infinite',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(80px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-green {
+            background: rgba(34, 197, 94, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+        }
+        
+        .green-gradient {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #15803d 0%, #22c55e 50%, #4ade80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(34, 197, 94, 0.15);
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .floating-shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-shape:nth-child(2) {
+            top: 30%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .morphing-blob {
+            animation: morph 12s ease-in-out infinite;
+            background: linear-gradient(45deg, #22c55e, #4ade80);
+            opacity: 0.08;
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .team-card {
+            transition: all 0.3s ease;
+            perspective: 1000px;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-card:hover .team-image {
+            transform: scale(1.05);
+        }
+        
+        .team-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link {
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 181, 0.3);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .leaf-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .interactive-card {
+            perspective: 1000px;
+        }
+        
+        .interactive-card:hover .card-inner {
+            transform: rotateY(2px) rotateX(2px);
+        }
+        
+        .card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        @media (max-width: 768px) {
+            .floating-elements { display: none; }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="glass rounded-2xl px-6 py-3 shadow-lg">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-xl white-gradient flex items-center justify-center shadow-lg">
+                            <img src="logo.png" alt="KrishiMitra Logo" class="w-10 h-10">
+                        </div>
+                        <span class="text-2xl font-bold font-poppins text-gradient">KrishiMitra</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-medium hover:text-farm-green-600 transition-all duration-300">Home</a>
+                        <a href="index.html#features" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-medium hover:text-farm-green-600 transition-all duration-300">Features</a>
+                        <a href="about.html" class="nav-link px-4 py-2 rounded-lg text-farm-green-800 font-medium hover:text-farm-green-600 transition-all duration-300">About Us</a>
+                        <a href="contact.html" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-medium hover:text-farm-green-600 transition-all duration-300">Contact</a>
+                        <button onclick="handleDownload()" class="group hover-lift green-gradient px-8 py-4 rounded-xl font-bold text-lg text-white shadow-xl hover:shadow-farm-green-500/25 transition-all duration-300 flex items-center justify-center">
+                            Download App
+                        </button>
+                    </div>
+                    
+                    <button id="mobile-menu-toggle" class="md:hidden text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 hidden">
+        <div class="glass min-h-screen flex flex-col justify-center items-center space-y-8">
+            <a href="index.html" class="text-2xl font-semibold text-gray-600 hover:text-farm-green-600 transition-colors">Home</a>
+            <a href="index.html#features" class="text-2xl font-semibold text-gray-600 hover:text-farm-green-600 transition-colors">Features</a>
+            <a href="about.html" class="text-2xl font-semibold text-farm-green-800 hover:text-farm-green-600 transition-colors">About Us</a>
+            <a href="contact.html" class="text-2xl font-semibold text-gray-600 hover:text-farm-green-600 transition-colors">Contact</a>
+            <button class="green-gradient px-8 py-4 rounded-xl font-semibold text-white text-xl shadow-lg">
+                Download App
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg">
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-shape w-64 h-64 morphing-blob"></div>
+            <div class="floating-shape w-48 h-48 morphing-blob"></div>
+            <div class="floating-shape w-32 h-32 morphing-blob"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 pt-24 pb-16 relative z-10">
+            <div class="text-center space-y-8 animate-slide-up">
+                <div class="inline-flex items-center px-4 py-2 glass-green rounded-full text-sm font-medium text-farm-green-700 mb-6">
+                    <span class="w-2 h-2 bg-farm-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Meet the Innovators Behind KrishiMitra
+                </div>
+                
+                <h1 class="text-5xl lg:text-7xl font-bold font-poppins leading-tight">
+                    <span class="text-gray-800">About</span><br>
+                    <span class="text-gradient">KrishiMitra</span>
+                </h1>
+                
+                <p class="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+                    We are a passionate team of technology enthusiasts dedicated to revolutionizing Indian agriculture through innovative AI solutions, empowering farmers with cutting-edge tools for sustainable and profitable farming.
+                </p>
+                
+                <div class="flex justify-center space-x-8 mt-12">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gradient">2025</div>
+                        <div class="text-gray-600">Founded</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gradient">6</div>
+                        <div class="text-gray-600">Team Members</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Story Section -->
+    <section class="py-24 px-6 relative bg-white">
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center px-4 py-2 glass-green rounded-full text-sm font-medium text-farm-green-700">
+                        <span class="w-2 h-2 bg-farm-green-500 rounded-full mr-2 animate-pulse"></span>
+                        Powered by Anam AI
+                    </div>
+                    
+                    <h2 class="text-4xl lg:text-5xl font-bold font-poppins">
+                        <span class="text-gradient">Our Mission</span><br>
+                        <span class="text-gray-800">Transforming Agriculture</span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                        <p>
+                            KrishiMitra was born from a simple yet powerful vision: to bridge the gap between traditional farming wisdom and modern technology. We believe that every farmer deserves access to the latest agricultural innovations, regardless of their location or resources.
+                        </p>
+                        <p>
+                            Developed under the innovative umbrella of <strong class="text-farm-green-700">Anam AI</strong>, our platform combines artificial intelligence, Internet of Things (IoT), and machine learning to create comprehensive solutions for modern farming challenges.
+                        </p>
+                        <p>
+                            From soil health monitoring to crop disease detection, from weather prediction to financial planning, KrishiMitra serves as a complete digital companion for farmers across India.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="glass rounded-3xl p-8 card-hover">
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 green-gradient rounded-2xl flex items-center justify-center">
+                                    <i class="fas fa-lightbulb text-2xl text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">Innovation</h3>
+                                    <p class="text-gray-600">Cutting-edge AI solutions for agriculture</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center">
+                                    <i class="fas fa-users text-2xl text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">Community</h3>
+                                    <p class="text-gray-600">Building connections between farmers</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                                    <i class="fas fa-leaf text-2xl text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">Sustainability</h3>
+                                    <p class="text-gray-600">Promoting eco-friendly farming practices</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-24 px-6 relative bg-gray-50 leaf-pattern">
+        <div class="container mx-auto">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-4 py-2 glass-green rounded-full text-sm font-medium text-farm-green-700 mb-6">
+                    <span class="w-2 h-2 bg-farm-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Meet Our Team
+                </div>
+                
+                <h2 class="text-4xl lg:text-6xl font-bold font-poppins mb-6">
+                    <span class="text-gradient">The Minds</span><br>
+                    <span class="text-gray-800">Behind Innovation</span>
+                </h2>
+                
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A diverse team of passionate innovators, each bringing unique expertise to revolutionize agriculture through technology.
+                </p>
+            </div>
+            
+            <!-- Team Members Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Team Member 1 - Krishna -->
+                <div class="team-card interactive-card">
+                    <div class="card-inner glass rounded-2xl p-8 text-center">
+                        <div class="w-32 h-32 mx-auto mb-6 relative">
+                            <div class="w-full h-full green-gradient rounded-full flex items-center justify-center text-4xl font-bold text-white team-image">
+                                K
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin-in text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Krishna</h3>
+                        <p class="text-farm-green-600 font-medium mb-4">Lead Developer</p>
+                        <p class="text-gray-600 mb-6">Full-stack developer with expertise in AI integration and mobile app development.</p>
+                        <a href="https://www.linkedin.com/in/krishnopreya-c-431767275/" class="social-link inline-flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 - Nikhil -->
+                <div class="team-card interactive-card">
+                    <div class="card-inner glass rounded-2xl p-8 text-center">
+                        <div class="w-32 h-32 mx-auto mb-6 relative">
+                            <div class="w-full h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-4xl font-bold text-white team-image">
+                                N
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin-in text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Nikhil</h3>
+                        <p class="text-farm-green-600 font-medium mb-4">AI Specialist</p>
+                        <p class="text-gray-600 mb-6">Machine learning engineer focused on computer vision and agricultural AI solutions.</p>
+                        <a href="https://www.linkedin.com/in/nikhil-kumar-obhawani/" class="social-link inline-flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 - Namya -->
+                <div class="team-card interactive-card">
+                    <div class="card-inner glass rounded-2xl p-8 text-center">
+                        <div class="w-32 h-32 mx-auto mb-6 relative">
+                            <div class="w-full h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center text-4xl font-bold text-white team-image">
+                                N
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin-in text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Namya</h3>
+                        <p class="text-farm-green-600 font-medium mb-4">UX/UI Designer</p>
+                        <p class="text-gray-600 mb-6">Creative designer ensuring intuitive and farmer-friendly user experiences.</p>
+                        <a href="https://www.linkedin.com/in/namya-jain-14726929a/" class="social-link inline-flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 - Shweta -->
+                <div class="team-card interactive-card">
+                    <div class="card-inner glass rounded-2xl p-8 text-center">
+                        <div class="w-32 h-32 mx-auto mb-6 relative">
+                            <div class="w-full h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-4xl font-bold text-white team-image">
+                                S
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin-in text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Shweta</h3>
+                        <p class="text-farm-green-600 font-medium mb-4">Data Scientist</p>
+                        <p class="text-gray-600 mb-6">Analytics expert specializing in agricultural data insights and predictive modeling.</p>
+                        <a href="https://www.linkedin.com/in/shweta-raturi-633b81243/" class="social-link inline-flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 5 - Deba -->
+                <div class="team-card interactive-card">
+                    <div class="card-inner glass rounded-2xl p-8 text-center">
+                        <div class="w-32 h-32 mx-auto mb-6 relative">
+                            <div class="w-full h-full bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center text-4xl font-bold text-white team-image">
+                                D
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin-in text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Deba</h3>
+                        <p class="text-farm-green-600 font-medium mb-4">Backend Engineer</p>
+                        <p class="text-gray-600 mb-6">Infrastructure specialist ensuring scalable and reliable platform performance.</p>
+                        <a href="#" class="social-link inline-flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mentor Section -->
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">Special Thanks to Our Mentor</h3>
+                    <p class="text-xl text-gray-600">Guiding us with wisdom and experience throughout our journey</p>
+                </div>
+                
+                <div class="flex justify-center">
+                    <div class="team-card interactive-card max-w-md">
+                        <div class="card-inner glass rounded-2xl p-8 text-center border-2 border-farm-green-200">
+                            <div class="w-40 h-40 mx-auto mb-6 relative">
+                                <div class="w-full h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-5xl font-bold text-white team-image">
+                                    G
+                                </div>
+                                <div class="absolute -bottom-2 -right-2 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <i class="fab fa-linkedin-in text-white"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-2">Gurmeet</h3>
+                            <p class="text-farm-green-600 font-medium mb-4">Project Mentor</p>
+                            <p class="text-gray-600 mb-6">Experienced mentor providing invaluable guidance and industry insights to shape our vision into reality.</p>
+                            <a href="https://www.linkedin.com/in/gurmeetatweb/" class="social-link inline-flex items-center justify-center w-14 h-14 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+                       
+    <!-- Values Section -->
+    <section class="py-24 px-6 relative bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl lg:text-5xl font-bold font-poppins mb-6">
+                    <span class="text-gradient">Our Values</span><br>
+                    <span class="text-gray-800">Drive Everything We Do</span>
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 green-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Empathy</h3>
+                    <p class="text-gray-600">Understanding farmers' challenges and creating solutions that truly matter.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-star text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Excellence</h3>
+                    <p class="text-gray-600">Delivering the highest quality solutions with attention to every detail.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Integrity</h3>
+                    <p class="text-gray-600">Building trust through transparency and honest communication.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-seedling text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Growth</h3>
+                    <p class="text-gray-600">Continuously evolving and helping farmers grow their success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-6 relative overflow-hidden green-gradient">
+        <div class="container mx-auto relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl lg:text-6xl font-bold font-poppins mb-8 text-white">
+                    Ready to <span class="text-yellow-300">Join Our Mission</span>?
+                </h2>
+                <p class="text-xl lg:text-2xl text-white/90 mb-12 leading-relaxed">
+                    Experience the future of farming with KrishiMitra. Download our app and become part of the agricultural revolution that's transforming lives across India.
+                </p>
+                
+                <div class="flex justify-center mb-8">
+                    <a href="index.html" class="group glass-green hover:bg-white/20 text-white px-20 py-5 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center border border-white/20">
+                        <i class="fas fa-download mr-4 text-3xl group-hover:scale-110 transition-transform"></i>
+                        <div class="text-left">
+                            <div class="text-xs opacity-70">GET STARTED TODAY</div>
+                            <div class="text-xl">Download KrishiMitra</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="bg-gray-900 py-16 px-6 relative">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-2xl white-gradient flex items-center justify-center shadow-lg mr-4">
+                            <img src="logo.png" alt="KrishiMitra Logo" class="w-10 h-10">
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold font-poppins text-gradient">KrishiMitra</h3>
+                            <p class="text-gray-400">Revolutionizing Indian Agriculture</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8 max-w-md">
+                        Empowering farmers with cutting-edge technology, AI insights, and a thriving community. Together, we're building the future of sustainable agriculture.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/nikhil-kumar-obhawani/" class="w-12 h-12 bg-gray-800 hover:bg-farm-green-600 rounded-xl flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://github.com/techiepookie" class="w-12 h-12 bg-gray-800 hover:bg-farm-green-600 rounded-xl flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                        <a href="https://wa.me/918949206491" class="w-12 h-12 bg-gray-800 hover:bg-farm-green-600 rounded-xl flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Contact</h4>
+                    <ul class="space-y-3">
+                        <li><a href="tel:+918949206491" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-phone mr-2"></i>+91 89492 06491</a></li>
+                        <li><a href="mailto:support@krishimitra.com" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-envelope mr-2"></i>nikhilkumar1241@outlook.com</a></li>
+                        <li><a href="https://wa.me/918949206491" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-whatsapp mr-2"></i>WhatsApp Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Support Hours</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><i class="fas fa-clock mr-2"></i>24/7 WhatsApp Support</li>
+                        <li><i class="fas fa-phone mr-2"></i>Phone: 9 AM - 6 PM IST</li>
+                        <li><i class="fas fa-envelope mr-2"></i>Email: Within 24 hours</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-center md:text-left mb-4 md:mb-0">
+                        &copy; 2025 KrishiMitra by Anam AI. All rights reserved. Made with <i class="fas fa-heart text-red-500 mx-1"></i> for Indian farmers.
+                    </p>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span class="flex items-center">
+                            <i class="fas fa-shield-alt text-farm-green-400 mr-2"></i>
+                            Secured by SSL
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on links
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Download function
+        function handleDownload() {
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                window.location.href = 'app.apk';
+            } else {
+                alert('QR Code functionality would be implemented here');
+            }
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background change on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.querySelector('.glass').style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.querySelector('.glass').style.background = 'rgba(255, 255, 255, 0.85)';
+            }
+        });
+        
+        // Enhanced card tilt effect
+        document.querySelectorAll('.interactive-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.querySelector('.card-inner').style.transform = 
+                    `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.card-inner').style.transform = 
+                    'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe team cards
+        document.querySelectorAll('.team-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Parallax effect for floating shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.floating-shape');
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.3;
+                shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+            });
+        });
+    </script>
+</body>
+</html> 

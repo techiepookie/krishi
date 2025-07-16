@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - KrishiMitra | Get In Touch With Our Team</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'farm-green': {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 15s ease infinite',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(80px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-green {
+            background: rgba(34, 197, 94, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+        }
+        
+        .green-gradient {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #15803d 0%, #22c55e 50%, #4ade80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(34, 197, 94, 0.15);
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .floating-shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-shape:nth-child(2) {
+            top: 30%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .morphing-blob {
+            animation: morph 12s ease-in-out infinite;
+            background: linear-gradient(45deg, #22c55e, #4ade80);
+            opacity: 0.08;
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.1);
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .leaf-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .interactive-card {
+            perspective: 1000px;
+        }
+        
+        .interactive-card:hover .card-inner {
+            transform: rotateY(2px) rotateX(2px);
+        }
+        
+        .card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .whatsapp-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .floating-elements { display: none; }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="glass rounded-2xl px-6 py-3 shadow-lg">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-xl white-gradient flex items-center justify-center shadow-lg">
+                            <img src="logo.png" alt="KrishiMitra Logo" class="w-10 h-10">
+                        </div>
+                        <span class="text-2xl font-bold font-poppins text-gradient">KrishiMitra</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-medium hover:text-farm-green-600 transition-all duration-300">Home</a>
+                        <a href="index.html#features" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-medium hover:text-farm-green-600 transition-all duration-300">Features</a>
+                        <a href="about.html" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-medium hover:text-farm-green-600 transition-all duration-300">About Us</a>
+                        <a href="contact.html" class="nav-link px-4 py-2 rounded-lg text-farm-green-800 font-medium hover:text-farm-green-600 transition-all duration-300">Contact</a>
+                        <button onclick="handleDownload()" class="group hover-lift green-gradient px-8 py-4 rounded-xl font-bold text-lg text-white shadow-xl hover:shadow-farm-green-500/25 transition-all duration-300 flex items-center justify-center">
+                            Download App
+                        </button>
+                    </div>
+                    
+                    <button id="mobile-menu-toggle" class="md:hidden text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 hidden">
+        <div class="glass min-h-screen flex flex-col justify-center items-center space-y-8">
+            <a href="index.html" class="text-2xl font-semibold text-gray-600 hover:text-farm-green-600 transition-colors">Home</a>
+            <a href="index.html#features" class="text-2xl font-semibold text-gray-600 hover:text-farm-green-600 transition-colors">Features</a>
+            <a href="about.html" class="text-2xl font-semibold text-gray-600 hover:text-farm-green-600 transition-colors">About Us</a>
+            <a href="contact.html" class="text-2xl font-semibold text-farm-green-800 hover:text-farm-green-600 transition-colors">Contact</a>
+            <a href="index.html" class="green-gradient px-8 py-4 rounded-xl font-semibold text-white text-xl shadow-lg">
+                Download App
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg">
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-shape w-64 h-64 morphing-blob"></div>
+            <div class="floating-shape w-48 h-48 morphing-blob"></div>
+            <div class="floating-shape w-32 h-32 morphing-blob"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 pt-24 pb-16 relative z-10">
+            <div class="text-center space-y-8 animate-slide-up">
+                <div class="inline-flex items-center px-4 py-2 glass-green rounded-full text-sm font-medium text-farm-green-700 mb-6">
+                    <span class="w-2 h-2 bg-farm-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Get In Touch With KrishiMitra Team
+                </div>
+                
+                <h1 class="text-5xl lg:text-7xl font-bold font-poppins leading-tight">
+                    <span class="text-gray-800">Contact</span><br>
+                    <span class="text-gradient">Our Experts</span>
+                </h1>
+                
+                <p class="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+                    Have questions about KrishiMitra? Need technical support? Want to partner with us? We're here to help you transform your farming journey.
+                </p>
+                
+                <div class="flex justify-center space-x-8 mt-12">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gradient">24/7</div>
+                        <div class="text-gray-600">Support Available</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gradient">&lt;2hrs</div>
+                        <div class="text-gray-600">Response Time</div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info Section -->
+    <section class="py-24 px-6 relative bg-gray-50 leaf-pattern">
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div class="space-y-8">
+                    <div class="mb-12">
+                        <div class="inline-flex items-center px-4 py-2 glass-green rounded-full text-sm font-medium text-farm-green-700 mb-6">
+                            <span class="w-2 h-2 bg-farm-green-500 rounded-full mr-2 animate-pulse"></span>
+                            Send us a message
+                        </div>
+                        <h2 class="text-4xl lg:text-5xl font-bold font-poppins mb-6">
+                            <span class="text-gradient">Let's Talk</span><br>
+                            <span class="text-gray-800">About Your Farm</span>
+                        </h2>
+                        <p class="text-xl text-gray-600">
+                            Fill out the form below and we'll send your message directly to our WhatsApp for instant support.
+                        </p>
+                    </div>
+                    
+                    <div class="glass rounded-3xl p-8 shadow-xl">
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                    <input type="text" id="name" name="name" required 
+                                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-farm-green-500 focus:border-transparent outline-none"
+                                           placeholder="Enter your full name">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" required 
+                                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-farm-green-500 focus:border-transparent outline-none"
+                                           placeholder="+91 98765 43210">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" 
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-farm-green-500 focus:border-transparent outline-none"
+                                       placeholder="your.email@example.com">
+                            </div>
+                            
+                            <div>
+                                <label for="farmSize" class="block text-sm font-medium text-gray-700 mb-2">Farm Size</label>
+                                <select id="farmSize" name="farmSize" 
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-farm-green-500 focus:border-transparent outline-none">
+                                    <option value="">Select farm size</option>
+                                    <option value="Small (1-5 acres)">Small (1-5 acres)</option>
+                                    <option value="Medium (5-20 acres)">Medium (5-20 acres)</option>
+                                    <option value="Large (20+ acres)">Large (20+ acres)</option>
+                                    <option value="Not a farmer">Not a farmer</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+                                <select id="subject" name="subject" required 
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-farm-green-500 focus:border-transparent outline-none">
+                                    <option value="">Select a subject</option>
+                                    <option value="Technical Support">Technical Support</option>
+                                    <option value="App Installation Help">App Installation Help</option>
+                                    <option value="Feature Request">Feature Request</option>
+                                    <option value="Partnership Inquiry">Partnership Inquiry</option>
+                                    <option value="General Question">General Question</option>
+                                    <option value="Feedback/Suggestion">Feedback/Suggestion</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                                <textarea id="message" name="message" rows="5" required 
+                                          class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-farm-green-500 focus:border-transparent outline-none resize-none"
+                                          placeholder="Tell us about your farming needs, questions, or how we can help you..."></textarea>
+                            </div>
+                            
+                            <button type="submit" 
+                                    class="w-full green-gradient text-white py-4 px-8 rounded-xl font-bold text-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group">
+                                <i class="fab fa-whatsapp mr-3 text-2xl group-hover:scale-110 transition-transform whatsapp-pulse"></i>
+                                Send to WhatsApp
+                            </button>
+                            
+                            <p class="text-sm text-gray-600 text-center">
+                                <i class="fas fa-shield-alt text-farm-green-500 mr-1"></i>
+                                Your information is secure and will only be used to contact you.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="mb-12">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6">Other Ways to Reach Us</h3>
+                        <p class="text-lg text-gray-600">
+                            Choose the most convenient way to get in touch with our KrishiMitra support team.
+                        </p>
+                    </div>
+                    
+                    <!-- Contact Cards -->
+                    <div class="space-y-6">
+                        <!-- WhatsApp -->
+                        <div class="contact-card interactive-card">
+                            <div class="card-inner glass rounded-2xl p-6 border border-farm-green-100">
+                                <div class="flex items-start space-x-4">
+                                    <div class="contact-icon w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fab fa-whatsapp text-2xl text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">WhatsApp Support</h4>
+                                        <p class="text-gray-600 mb-4">Get instant help through WhatsApp chat. Available 24/7 for all your farming queries.</p>
+                                        <a href="https://wa.me/918949206491?text=Hi%20KrishiMitra%20Team%2C%20I%20need%20help%20with%20your%20farming%20app" 
+                                           class="inline-flex items-center text-green-600 font-medium hover:text-green-700 transition-colors">
+                                            <i class="fab fa-whatsapp mr-2"></i>
+                                            +91 89492 06491
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone -->
+                        <div class="contact-card interactive-card">
+                            <div class="card-inner glass rounded-2xl p-6 border border-farm-green-100">
+                                <div class="flex items-start space-x-4">
+                                    <div class="contact-icon w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-phone text-2xl text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">Phone Support</h4>
+                                        <p class="text-gray-600 mb-4">Speak directly with our agricultural experts for personalized assistance.</p>
+                                        <a href="tel:+918949206491" 
+                                           class="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors">
+                                            <i class="fas fa-phone mr-2"></i>
+                                            +91 89492 06491
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="contact-card interactive-card">
+                            <div class="card-inner glass rounded-2xl p-6 border border-farm-green-100">
+                                <div class="flex items-start space-x-4">
+                                    <div class="contact-icon w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-envelope text-2xl text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">Email Support</h4>
+                                        <p class="text-gray-600 mb-4">Send us detailed queries and get comprehensive solutions via email.</p>
+                                        <a href="mailto:support@krishimitra.com" 
+                                           class="inline-flex items-center text-purple-600 font-medium hover:text-purple-700 transition-colors">
+                                            <i class="fas fa-envelope mr-2"></i>
+                                            nikhilkumar1241@outlook.com
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    <!-- Social Media -->
+                    <div class="glass rounded-2xl p-6">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/nikhil-kumar-obhawani/" 
+                               class="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                            <a href="https://github.com/techiepookie" 
+                               class="w-12 h-12 bg-gray-800 hover:bg-gray-900 rounded-xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="#" 
+                               class="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                            </a>
+                            <a href="#" 
+                               class="w-12 h-12 bg-red-500 hover:bg-red-600 rounded-xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-youtube text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 px-6 relative bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 glass-green rounded-full text-sm font-medium text-farm-green-700 mb-6">
+                    <span class="w-2 h-2 bg-farm-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Frequently Asked Questions
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold font-poppins mb-6">
+                    <span class="text-gradient">Quick Answers</span><br>
+                    <span class="text-gray-800">to Common Questions</span>
+                </h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto space-y-4">
+                <!-- FAQ Items -->
+                <div class="glass rounded-2xl p-6 border border-farm-green-100">
+                    <div class="flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">How do I download and install KrishiMitra?</h3>
+                        <i class="fas fa-chevron-down text-farm-green-600 transition-transform"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>You can download KrishiMitra APK directly from our website or scan the QR code. The app supports Android 6.0 and above. For installation help, contact us on WhatsApp.</p>
+                    </div>
+                </div>
+                
+                <div class="glass rounded-2xl p-6 border border-farm-green-100">
+                    <div class="flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Is KrishiMitra free to use?</h3>
+                        <i class="fas fa-chevron-down text-farm-green-600 transition-transform"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>Yes! KrishiMitra is completely free for all farmers. Our mission is to democratize access to modern farming technology across India.</p>
+                    </div>
+                </div>
+                
+                <div class="glass rounded-2xl p-6 border border-farm-green-100">
+                    <div class="flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Which languages does the app support?</h3>
+                        <i class="fas fa-chevron-down text-farm-green-600 transition-transform"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>KrishiMitra supports 12+ Indian languages including Hindi, Tamil, Telugu, Marathi, Bengali, Gujarati, Punjabi, and many more. You can easily switch languages in the app settings.</p>
+                    </div>
+                </div>
+                
+                <div class="glass rounded-2xl p-6 border border-farm-green-100">
+                    <div class="flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Do I need internet connection to use the app?</h3>
+                        <i class="fas fa-chevron-down text-farm-green-600 transition-transform"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        <p>Many features work offline including crop disease detection, weather forecasts (cached), and educational content. However, real-time data and community features require internet connection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-6 relative overflow-hidden green-gradient">
+        <div class="container mx-auto relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl lg:text-6xl font-bold font-poppins mb-8 text-white">
+                    Ready to <span class="text-yellow-300">Transform</span><br>
+                    Your Farming?
+                </h2>
+                <p class="text-xl lg:text-2xl text-white/90 mb-12 leading-relaxed">
+                    Download KrishiMitra today and join thousands of farmers who are already experiencing the benefits of smart agriculture.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                    <a href="index.html" class="group glass-green hover:bg-white/20 text-white px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center border border-white/20">
+                        <i class="fas fa-download mr-4 text-2xl group-hover:scale-110 transition-transform"></i>
+                        Download App
+                    </button>
+                    
+                    <a href="https://wa.me/918949206491?text=Hi%20KrishiMitra%20Team%2C%20I%20want%20to%20learn%20more%20about%20your%20farming%20app" 
+                       class="group glass-green hover:bg-white/20 text-white px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center border border-white/20">
+                        <i class="fab fa-whatsapp mr-4 text-2xl group-hover:scale-110 transition-transform whatsapp-pulse"></i>
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-16 px-6 relative">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-2xl white-gradient flex items-center justify-center shadow-lg mr-4">
+                            <img src="logo.png" alt="KrishiMitra Logo" class="w-10 h-10">
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold font-poppins text-gradient">KrishiMitra</h3>
+                            <p class="text-gray-400">Revolutionizing Indian Agriculture</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8 max-w-md">
+                        Empowering farmers with cutting-edge technology, AI insights, and a thriving community. Together, we're building the future of sustainable agriculture.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/nikhil-kumar-obhawani/" class="w-12 h-12 bg-gray-800 hover:bg-farm-green-600 rounded-xl flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://github.com/techiepookie" class="w-12 h-12 bg-gray-800 hover:bg-farm-green-600 rounded-xl flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                        <a href="https://wa.me/918949206491" class="w-12 h-12 bg-gray-800 hover:bg-farm-green-600 rounded-xl flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Contact</h4>
+                    <ul class="space-y-3">
+                        <li><a href="tel:+918949206491" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-phone mr-2"></i>+91 89492 06491</a></li>
+                        <li><a href="mailto:support@krishimitra.com" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-envelope mr-2"></i>support@krishimitra.com</a></li>
+                        <li><a href="https://wa.me/918949206491" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-whatsapp mr-2"></i>WhatsApp Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Support Hours</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><i class="fas fa-clock mr-2"></i>24/7 WhatsApp Support</li>
+                        <li><i class="fas fa-phone mr-2"></i>Phone: 9 AM - 6 PM IST</li>
+                        <li><i class="fas fa-envelope mr-2"></i>Email: Within 24 hours</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-16 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-center md:text-left mb-4 md:mb-0">
+                        &copy; 2025 KrishiMitra by Anam AI. All rights reserved. Made with <i class="fas fa-heart text-red-500 mx-1"></i> for Indian farmers.
+                    </p>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span class="flex items-center">
+                            <i class="fas fa-shield-alt text-farm-green-400 mr-2"></i>
+                            Secured by SSL
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on links
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Download function
+        function handleDownload() {
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                window.location.href = 'app.apk';
+            } else {
+                alert('For desktop users, please scan the QR code on our homepage or visit us on mobile.');
+            }
+        }
+        
+        // Contact Form Submission to WhatsApp
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const farmSize = document.getElementById('farmSize').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate required fields
+            if (!name || !phone || !subject || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Create WhatsApp message
+            let whatsappMessage = `*New Contact from KrishiMitra Website*\n\n`;
+            whatsappMessage += `👤 *Name:* ${name}\n`;
+            whatsappMessage += `📱 *Phone:* ${phone}\n`;
+            if (email) whatsappMessage += `📧 *Email:* ${email}\n`;
+            if (farmSize) whatsappMessage += `🌾 *Farm Size:* ${farmSize}\n`;
+            whatsappMessage += `📋 *Subject:* ${subject}\n\n`;
+            whatsappMessage += `💬 *Message:*\n${message}\n\n`;
+            whatsappMessage += `---\n📅 Sent: ${new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})} IST`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // WhatsApp number (replace with actual KrishiMitra WhatsApp number)
+            const whatsappNumber = '918949206491';
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            alert('Redirecting to WhatsApp... Your message is ready to send!');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            content.classList.toggle('hidden');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background change on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.querySelector('.glass').style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.querySelector('.glass').style.background = 'rgba(255, 255, 255, 0.85)';
+            }
+        });
+        
+        // Enhanced card tilt effect
+        document.querySelectorAll('.interactive-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                const cardInner = card.querySelector('.card-inner');
+                if (cardInner) {
+                    cardInner.style.transform = 
+                        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const cardInner = card.querySelector('.card-inner');
+                if (cardInner) {
+                    cardInner.style.transform = 
+                        'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                }
+            });
+        });
+        
+        // Parallax effect for floating shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.floating-shape');
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.3;
+                shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+            });
+        });
+        
+        // Form input animations
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
